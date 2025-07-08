@@ -5,154 +5,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rock Paper Scissor</title>
   <style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #000046;  
-    background: -webkit-linear-gradient(to left, #1CB5E0, #000046);  
-    background: linear-gradient(to left, #1CB5E0, #000046); 
-    background-attachment: fixed;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #000000, #001f3f);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  h2 {
-    margin-bottom: 20px;
-    font-size: 64px;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  }
+    h2 {
+      font-size: 64px;
+      margin-bottom: 40px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px #1CB5E0, 0 0 25px #1CB5E0;
+    }
 
-  .over {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 30px;
-    gap: 40px;
-  }
+    .over {
+      display: flex;
+      justify-content: center;
+      gap: 500px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
 
-  .user, .computer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
+    .user, .computer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
 
-  button {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 2px solid #fff;
-    border-radius: 12px;
-    padding: 10px;
-    transition: transform 0.25s ease, background-color 0.3s, border 0.3s;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  }
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #1CB5E0;
+      font-weight: bold;
+    }
 
-  button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.1);
-    border: 2px solid #ff4444;
-  }
+    .choice {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
 
-  button:focus {
-    outline: none;
-    border: 2px solid #ff0000;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
-  }
+    .label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #00d9ff;
+      text-shadow: 0 0 3px rgba(0, 217, 255, 0.5);
+    }
 
-  img {
-    width: 90px;
-    height: 90px;
-    transition: transform 0.3s ease;
-  }
+    .choice button {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: none;
+      border-radius: 20px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.5),
+        0 0 12px rgba(28, 181, 224, 0.3);
+    }
 
-  img:hover {
-    transform: scale(1.05);
-  }
+    .choice button:hover {
+      transform: scale(1.1);
+      box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(28, 181, 224, 0.6);
+    }
 
-  #im {
-    border: 2px solid white;
-    border-radius: 12px;
-    padding: 10px;
-    transition: transform 0.3s ease, background-color 0.3s;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.05);
-  }
+    .choice img {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      box-shadow:
+        0 4px 10px rgba(0, 217, 255, 0.2),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+    }
 
-  #im:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.08);
-  }
+    .choice img:hover {
+      transform: scale(1.05);
+    }
 
-  #displaydata {
-    margin-top: 40px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 20px 30px;
-    border-radius: 15px;
-    height: 100px;
-    width: 80%;
-    max-width: 700px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  }
-</style>
-
+    #displaydata {
+      margin-top: 50px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 30px 40px;
+      border-radius: 20px;
+      width: 85%;
+      max-width: 800px;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(0, 217, 255, 0.3);
+      box-shadow:
+        0 0 15px rgba(0, 217, 255, 0.3),
+        0 0 30px rgba(0, 217, 255, 0.2);
+    }
+  </style>
 </head>
 <body>
   <h2>Rock Paper Scissor Game</h2>
 
   <div class="over">
     <div class="user">
-      <button id="userrock"><img src="rockim.png" alt="rock" /></button>
-      <button id="userpaper"><img src="paperim.png" alt="paper" /></button>
-      <button id="userscissor"><img src="scissorsim.png" alt="scissor" /></button>
+      <div class="title">You</div>
+      <div class="choice">
+        <button id="userrock"><img src="rockim.png" alt="rock" /></button>
+        <div class="label">Rock</div>
+      </div>
+      <div class="choice">
+        <button id="userpaper"><img src="paperim.png" alt="paper" /></button>
+        <div class="label">Paper</div>
+      </div>
+      <div class="choice">
+        <button id="userscissor"><img src="scissorsim.png" alt="scissor" /></button>
+        <div class="label">Scissor</div>
+      </div>
     </div>
 
     <div class="computer">
-      <img src="rockim.png" alt="rock"  id="im">
-      <img src="paperim.png" alt="paper" id="im" >
-      <img src="scissorsim.png" alt="scissor" id="im">
+      <div class="title">Computer</div>
+      <div class="choice">
+        <button disabled><img src="rockim.png" alt="rock" /></button>
+        <div class="label">Rock</div>
+      </div>
+      <div class="choice">
+        <button disabled><img src="paperim.png" alt="paper" /></button>
+        <div class="label">Paper</div>
+      </div>
+      <div class="choice">
+        <button disabled><img src="scissorsim.png" alt="scissor" /></button>
+        <div class="label">Scissor</div>
+      </div>
     </div>
   </div>
 
-  <div id="displaydata">
-
-  </div>
+  <div id="displaydata">Make your move!</div>
 
   <script>
-    let rockbtncall = document.getElementById("userrock");
-    let paperbtncall = document.getElementById("userpaper");
-    let scissorbtncall = document.getElementById("userscissor");
-    let displaydatacall = document.getElementById("displaydata");
+    const rockBtn = document.getElementById("userrock");
+    const paperBtn = document.getElementById("userpaper");
+    const scissorBtn = document.getElementById("userscissor");
+    const resultBox = document.getElementById("displaydata");
 
-function playgame(userchoice) {
+    function playgame(userchoice) {
       const choices = ["rock", "paper", "scissor"];
       const computerchoice = choices[Math.floor(Math.random() * 3)];
       let result = "";
 
-if (userchoice === computerchoice) {
-        result = `It's a draw. You both chose ${userchoice}.`;
-} 
-else if ((userchoice === "rock" && computerchoice === "scissor") || (userchoice === "scissor" && computerchoice === "paper") || (userchoice === "paper" && computerchoice === "rock")) {
-        result = `You won! You chose ${userchoice}, computer chose ${computerchoice}.`;
+      if (userchoice === computerchoice) {
+        result = `🤝 It's a draw! You both chose ${userchoice}.`;
+      } else if (
+        (userchoice === "rock" && computerchoice === "scissor") ||
+        (userchoice === "scissor" && computerchoice === "paper") ||
+        (userchoice === "paper" && computerchoice === "rock")
+      ) {
+        result = `🎉 You won! You chose ${userchoice}, computer chose ${computerchoice}.`;
       } else {
-        result = `Computer won! You chose ${userchoice}, computer chose ${computerchoice}.`;
+        result = `💻 Computer won! You chose ${userchoice}, computer chose ${computerchoice}.`;
       }
-      displaydatacall.innerHTML = result;
+
+      resultBox.innerHTML = result;
     }
-    rockbtncall.addEventListener("click", () => playgame("rock"));
-    paperbtncall.addEventListener("click", () => playgame("paper"));
-    scissorbtncall.addEventListener("click", () => playgame("scissor"));
+
+    rockBtn.addEventListener("click", () => playgame("rock"));
+    paperBtn.addEventListener("click", () => playgame("paper"));
+    scissorBtn.addEventListener("click", () => playgame("scissor"));
   </script>
 </body>
 </html>
